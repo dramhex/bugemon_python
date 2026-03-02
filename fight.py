@@ -1,5 +1,7 @@
 import random
 
+from player import Player
+
 from bugemon import Bugemon
 from ability import Ability
 
@@ -95,5 +97,17 @@ def run_turn(bugemon_1: Bugemon, bugemon_2: Bugemon, ability_1: Ability, ability
     
     return log
 
-def run_battle(player: Bugemon, enemy: Bugemon) -> list[str]:
-    pass
+class Battle:
+    def __init__(self, player_1: Player, player_2: Player):
+        self.turn = 1
+        self.player_1 = player_1
+        self.player_2 = player_2
+        self.player_1_active_bugemon = next((b for b in player_1.team if b.is_alive), None)
+        self.player_2_active_bugemon = next((b for b in player_2.team if b.is_alive), None)
+        self.log = ["Le combat démarre"]
+        
+    def run_battle(self) -> list[str]:
+        while(not self.player_1.has_lost and not self.player_2.has_lost):
+            self.log.append(f"Tour {self.turn}")
+            self.log.extend(run_turn(self.player_1_active_bugemon, self.player_2_active_bugemon, self.player_1_active_bugemon.ability_set[1], self.player_2_active_bugemon[0])) # implémenter le choix d'action
+            self.turn += 1
