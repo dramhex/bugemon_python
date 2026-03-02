@@ -19,6 +19,12 @@ def load_bugemon(data: dict, abilities: dict[str, Ability]) -> Bugemon:
         ability_set
     )
     
+def load_all_bugemons(filepath: str, abilities: dict[str, Ability]) -> list[Bugemon]:
+    with open(filepath, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    return [load_bugemon(b, abilities) for b in data["bugemons"]]
+    
 def load_ability(data: dict) -> Ability:
     return Ability(
         data["id"],
