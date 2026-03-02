@@ -30,14 +30,7 @@ def calculate_type_multiplier(ability_elementary_type: str, target_elementary_ty
 def calculate_critical_multiplier() -> float:
     return 1.5 if random.random() < 0.1 else 1 #10% de chances de faire un coup critique (x1.5)
 
-def apply_effect(launcher: Bugemon, target: Bugemon, ability: Ability):
-    pass
-
-def use_ability(launcher: Bugemon, target: Bugemon, ability: Ability):
-    damage = calculate_damage(launcher, target, ability)
-    target.health.apply_modifier(-damage)
-    
-    effects = ability.effects
+def apply_effect(launcher: Bugemon, target: Bugemon, effects: dict):
     if effects:
         if effects["cible"] == "lanceur":
             if effects["type"] == "soin":  
@@ -52,6 +45,8 @@ def use_ability(launcher: Bugemon, target: Bugemon, ability: Ability):
                 stat = getattr(target, effects["stat"])  
                 stat.apply_modifier(effects["modificateur"])
                 
+def use_ability(launcher: Bugemon, target: Bugemon, ability: Ability):
+    damage = calculate_damage(launcher, target, ability)
+    target.health.apply_modifier(-damage)
     
-    
-    
+    apply_effect(launcher, target, ability.effects)
