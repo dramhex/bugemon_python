@@ -112,6 +112,7 @@ class Battle:
             self.log.extend(run_turn(self.player_1_active_bugemon, self.player_2_active_bugemon, random.choice(self.player_1_active_bugemon.ability_set), random.choice(self.player_2_active_bugemon.ability_set))) # implémenter le choix d'action
             self.turn += 1
             
+            # pour l'instant on prend juste le prochain pokemon dans l'équipe dès qu'un d'entre eux meurt
             if not self.player_1_active_bugemon.is_alive:
                 self.player_1_active_bugemon = next((b for b in self.player_1.team if b.is_alive), None)
             if not self.player_2_active_bugemon.is_alive:
