@@ -94,3 +94,6 @@ def run_turn(bugemon_1: Bugemon, bugemon_2: Bugemon, ability_1: Ability, ability
         log.extend(use_ability(second, first, second_ability))
     
     return log
+
+def run_battle(player: Bugemon, enemy: Bugemon) -> list[str]:
+    pass
