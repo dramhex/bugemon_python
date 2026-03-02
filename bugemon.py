@@ -12,6 +12,7 @@ class Bugemon:
         self.initiative = Stat(initiative)
         self.ability_set = ability_set
         self.level = level
+        self.starter = starter
         self.experience = 0
         
     @property

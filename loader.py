@@ -16,7 +16,8 @@ def load_bugemon(data: dict, abilities: dict[str, Ability]) -> Bugemon:
         data["stats"]["attaque"], 
         data["stats"]["defense"], 
         data["stats"]["initiative"],
-        ability_set
+        ability_set,
+        data["starter"]
     )
     
 def load_all_bugemons(filepath: str, abilities: dict[str, Ability]) -> list[Bugemon]:
@@ -32,7 +33,7 @@ def load_ability(data: dict) -> Ability:
         data["description"],
         data["type"],
         data["puissance"],
-        data["effets"]
+        data["effets"][0] if data["effets"] else {}
     )
     
 def load_all_abilities(filepath: str) -> dict[str, Ability]:

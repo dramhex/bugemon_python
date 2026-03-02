@@ -30,7 +30,7 @@ def calculate_type_multiplier(ability_elementary_type: str, target_elementary_ty
 def calculate_critical_multiplier() -> float:
     return 1.5 if random.random() < 0.1 else 1 #10% de chances de faire un coup critique (x1.5)
 
-def apply_effect(launcher: Bugemon, target: Bugemon, effects: dict) -> list[str]:
+def apply_effect(launcher: Bugemon, target: Bugemon, effects: list) -> list[str]:
     log = []
     
     if effects:
