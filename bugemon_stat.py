@@ -6,5 +6,5 @@ class Stat:
     def reset_current_value(self):
         self.current_value = self.base_value
 
-    def apply_modificator(self, modificator):
-        self.current_value = max(0, self.current_value + modificator)
+    def apply_modifier(self, modifier):
+        self.current_value = max(0, self.current_value + modifier)
