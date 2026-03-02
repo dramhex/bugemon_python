@@ -5,7 +5,7 @@ def main():
     bugemons  = load_all_bugemons("assets/json/bugemons.json", abilities)
 
     for bugemon in bugemons:
-        print(bugemon)
+        print(bugemon.name)
 
 if __name__ == "__main__":
     main()

@@ -32,7 +32,7 @@ def load_ability(data: dict) -> Ability:
         data["description"],
         data["type"],
         data["puissance"],
-        data["effets"][0]
+        data["effets"]
     )
     
 def load_all_abilities(filepath: str) -> dict[str, Ability]:
