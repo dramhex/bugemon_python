@@ -109,5 +109,12 @@ class Battle:
     def run_battle(self) -> list[str]:
         while(not self.player_1.has_lost and not self.player_2.has_lost):
             self.log.append(f"Tour {self.turn}")
-            self.log.extend(run_turn(self.player_1_active_bugemon, self.player_2_active_bugemon, self.player_1_active_bugemon.ability_set[1], self.player_2_active_bugemon[0])) # implémenter le choix d'action
+            self.log.extend(run_turn(self.player_1_active_bugemon, self.player_2_active_bugemon, random.choice(self.player_1_active_bugemon.ability_set), random.choice(self.player_2_active_bugemon.ability_set))) # implémenter le choix d'action
             self.turn += 1
+            
+            if not self.player_1_active_bugemon.is_alive:
+                self.player_1_active_bugemon = next((b for b in self.player_1.team if b.is_alive), None)
+            if not self.player_2_active_bugemon.is_alive:
+                self.player_2_active_bugemon = next((b for b in self.player_2.team if b.is_alive), None)
+
+            return self.log
