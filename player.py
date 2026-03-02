@@ -3,9 +3,8 @@ from item import Item
 
 
 class Player:
-    def __init__(self, team: list[Bugemon], strategy: PlayerStrategy):
+    def __init__(self, team: list[Bugemon]):
         self.team = team
-        self.strategy = strategy
         self.items = []
         
     @property

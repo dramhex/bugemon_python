@@ -2,12 +2,12 @@ from bugemon_stat import Stat
 from ability import Ability
 
 class Bugemon:
-    def __init__(self, identifier: str, name: str , elementary_type: str, health: int, attack: int, defense: int, initiative: int, ability_set: list[Ability], starter: bool, level: int = 1):
+    def __init__(self, identifier: str, name: str , elementary_type: str, health: int, attaque: int, defense: int, initiative: int, ability_set: list[Ability], starter: bool, level: int = 1):
         self.identifier = identifier
         self.name = name
         self.elementary_type = elementary_type
         self.health = Stat(health) # toutes les stats ont la meme logique finalement
-        self.attack = Stat(attack)
+        self.attaque = Stat(attaque)
         self.defense = Stat(defense)
         self.initiative = Stat(initiative)
         self.ability_set = ability_set

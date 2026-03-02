@@ -17,7 +17,7 @@ TYPE_CHART = {
 }
 
 def calculate_damage(launcher: Bugemon, target: Bugemon, ability: Ability) -> int:
-    attack_factor = (100 + launcher.attack.current_value) / 100
+    attack_factor = (100 + launcher.attaque.current_value) / 100
     defense_factor = 100 / (100 + target.defense.current_value)
     
     type_multiplier = calculate_type_multiplier(ability.elementary_type, target.elementary_type)
@@ -47,7 +47,7 @@ def apply_effect(launcher: Bugemon, target: Bugemon, effects: list) -> list[str]
                 if effects["modificateur"] > 0:
                     log.append(f"{effects['stat']} de {launcher.name} augmente de {effects['modificateur']}".capitalize())
                 else:
-                    log.append(f"{effects['stat']} de {launcher.name} diminue de {effects['modificateur']}".capitalize())
+                    log.append(f"{effects['stat']} de {launcher.name} diminue de {abs(effects['modificateur'])}".capitalize())
                     
         elif effects["cible"] == "equipe":
                 pass # implémenter une boucle qui soigne toute l'équipe
@@ -59,7 +59,7 @@ def apply_effect(launcher: Bugemon, target: Bugemon, effects: list) -> list[str]
                 if effects["modificateur"] > 0:
                     log.append(f"{effects['stat']} de {target.name} augmente de {effects['modificateur']}".capitalize())
                 else:
-                    log.append(f"{effects['stat']} de {target.name} diminue de {effects['modificateur']}".capitalize())
+                    log.append(f"{effects['stat']} de {target.name} diminue de {abs(effects['modificateur'])}".capitalize())
     return log
 
 def get_priority(bugemon_1: Bugemon, bugemon_2: Bugemon, ability_1, ability_2) -> tuple[Bugemon, Bugemon, Ability, Ability]:
@@ -104,7 +104,7 @@ class Battle:
         self.player_2 = player_2
         self.player_1_active_bugemon = next((b for b in player_1.team if b.is_alive), None)
         self.player_2_active_bugemon = next((b for b in player_2.team if b.is_alive), None)
-        self.log = ["Le combat démarre"]
+        self.log = ["Le combat demarre"]
         
     def run_battle(self) -> list[str]:
         while(not self.player_1.has_lost and not self.player_2.has_lost):
@@ -118,4 +118,4 @@ class Battle:
             if not self.player_2_active_bugemon.is_alive:
                 self.player_2_active_bugemon = next((b for b in self.player_2.team if b.is_alive), None)
 
-            return self.log
+        return self.log
