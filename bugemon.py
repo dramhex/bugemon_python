@@ -2,7 +2,7 @@ from bugemon_stat import Stat
 from ability import Ability
 
 class Bugemon:
-    def __init__(self, identifier: str, name: str , elementary_type: str, health: int, attack: int, defense: int, initiative: int, ability_set: list[Ability], level: int = 1):
+    def __init__(self, identifier: str, name: str , elementary_type: str, health: int, attack: int, defense: int, initiative: int, ability_set: list[Ability], starter: bool, level: int = 1):
         self.identifier = identifier
         self.name = name
         self.elementary_type = elementary_type
