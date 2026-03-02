@@ -43,9 +43,9 @@ def apply_effect(launcher: Bugemon, target: Bugemon, effects: list) -> list[str]
                 stat.apply_modifier(effects["modificateur"])
                 
                 if effects["modificateur"] > 0:
-                    log.append(f"{effects['stat']} de {launcher.name} augmente de {effects['modificateur']}")
+                    log.append(f"{effects['stat']} de {launcher.name} augmente de {effects['modificateur']}".capitalize())
                 else:
-                    log.append(f"{effects['stat']} de {launcher.name} diminue de {effects['modificateur']}")
+                    log.append(f"{effects['stat']} de {launcher.name} diminue de {effects['modificateur']}".capitalize())
                     
         elif effects["cible"] == "equipe":
                 pass # implémenter une boucle qui soigne toute l'équipe
@@ -55,9 +55,9 @@ def apply_effect(launcher: Bugemon, target: Bugemon, effects: list) -> list[str]
                 stat.apply_modifier(effects["modificateur"])
                 
                 if effects["modificateur"] > 0:
-                    log.append(f"{effects['stat']} de {target.name} augmente de {effects['modificateur']}")
+                    log.append(f"{effects['stat']} de {target.name} augmente de {effects['modificateur']}".capitalize())
                 else:
-                    log.append(f"{effects['stat']} de {target.name} diminue de {effects['modificateur']}")
+                    log.append(f"{effects['stat']} de {target.name} diminue de {effects['modificateur']}".capitalize())
     return log
 
 def get_priority(bugemon_1: Bugemon, bugemon_2: Bugemon, ability_1, ability_2) -> tuple[Bugemon, Bugemon, Ability, Ability]:
