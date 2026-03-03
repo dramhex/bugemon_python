@@ -118,4 +118,8 @@ class Battle:
             if not self.player_2_active_bugemon.is_alive:
                 self.player_2_active_bugemon = next((b for b in self.player_2.team if b.is_alive), None)
 
+        if self.player_1.has_lost:
+            self.log.append("Joueur 1 a perdu")
+        else:
+            self.log.append("Joueur 2 a perdu")
         return self.log
